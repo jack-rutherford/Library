@@ -1,5 +1,5 @@
 package library;
 
-public class Material {
+public abstract class Material {
 
 }
