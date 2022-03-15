@@ -18,6 +18,7 @@ public class UserInterface implements IUserInterface {
 		displayCollection = new JButton("Display Collection");
 		Checkout = new JButton("Checkout");
 		title = new JLabel("Library");
+		System.out.println("Working");
 		
 		//Register buttons with action listener. 
 		
