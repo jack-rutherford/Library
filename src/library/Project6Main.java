@@ -1,10 +1,18 @@
 package library;
 
+import java.io.FileNotFoundException;
+
 public class Project6Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println("This is running");
-	}
+		UserInterface UI = new UserInterface();
+	/*	try {
+			UI.runProgram();
+		}
+		catch(FileNotFoundException e) {
+			System.out.println("File not found...");
+		}
+	}*/
 
+}
 }
