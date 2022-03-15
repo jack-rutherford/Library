@@ -5,9 +5,7 @@ import javax.swing.*;
 public class UserInterface implements IUserInterface {
 	
 	private JPanel homePanel;
-	private JButton displayCollection;
-	private JButton Checkout;
-	private JButton Quit;
+	private JButton displayCollection, Checkout, Quit;
 	private JLabel title;
 	private final int WINDOW_WIDTH = 1000, WINDOW_HEIGHT = 500;
 
