@@ -1,17 +1,24 @@
 package library;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 public abstract class Material {
 	
 //	private int checkOutTime;
 	private String title;
 	private String callNumber;
 	private boolean canBeCheckedOut;
-	//Gregorian calendar due date
+	private GregorianCalendar dueDate;
+	private Calendar calendar;
 	
 	public Material(String title, String callNumber) {
 		this.title = title;
 		this.callNumber = callNumber;
 		canBeCheckedOut = true;
+		dueDate = new GregorianCalendar(2022, 3, 15);
+		calendar = Calendar.getInstance();
+		
 	}
 	
 	public boolean canBeCheckedOut() {
