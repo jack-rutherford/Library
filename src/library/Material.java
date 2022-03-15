@@ -43,6 +43,6 @@ public abstract class Material {
 	
 	public Calendar getDueDate() {
 		return dueDate;
-	}
+	} 
 	
 }
