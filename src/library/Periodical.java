@@ -2,12 +2,13 @@ package library;
 
 public class Periodical extends Material {
 
-	private String volume, issue, subject;
+	private String issue, volume, genre;
 	
-	public Periodical(String title, String callNumber, String issue, String volume) {
+	public Periodical(String callNumber, String title, String issue, String volume, String genre) {
 		super(title, callNumber);
 		this.issue = issue;
 		this.volume = volume;
+		this.genre = genre;
 		// TODO Auto-generated constructor stub
 	}
 }
