@@ -12,5 +12,11 @@ public class Book extends Material {
 		// TODO Auto-generated constructor stub
 	}
 
+	public String getAuthor() {
+		return author;
+	}
 	
+	public String getGenre() {
+		return genre;
+	}
 }

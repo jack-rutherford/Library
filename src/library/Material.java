@@ -46,8 +46,12 @@ public abstract class Material {
 		}
 	}
 
-	public Calendar getDueDate() {
-		return dueDate;
-	} 
+	public String getDueDate() {
+		return String.format("Date Out: %tD\n", dueDate);
+	}
+	
+	public String getCheckOutDate() {
+		return String.format("Date Out: %tD\n", dateCheckedOut);
+	}
 
 }

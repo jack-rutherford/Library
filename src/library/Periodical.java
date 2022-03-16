@@ -11,4 +11,17 @@ public class Periodical extends Material {
 		this.genre = genre;
 		// TODO Auto-generated constructor stub
 	}
+	
+	public String getIssue() {
+		return issue;
+	}
+	
+	public String getVolume() {
+		return volume;
+	}
+	
+	public String getGenre() {
+		return genre;
+	}
+	
 }

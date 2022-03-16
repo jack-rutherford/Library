@@ -7,7 +7,7 @@ public interface ILibrary {
 	
 	void loadMaterials() throws FileNotFoundException;
 	
-	void checkOut();
+	boolean checkOut(String callNumber);
 	
 	String displayCollection();
 	

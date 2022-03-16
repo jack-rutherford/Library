@@ -40,21 +40,58 @@ public class Library implements ILibrary {
 	}
 
 	@Override
-	public void checkOut() {
-		// TODO Auto-generated method stub
-		
+	public boolean checkOut(String callNumber) {
+		for(Material mat : materialList) {
+			if(mat.getCallNumber().equals(callNumber)) {
+				mat.setCanBeCheckedOut(false);
+				mat.setDueDate();
+				return true; //Found the material we were looking for
+			}
+		}
+		return false; //Didn't find the material in the collection
 	}
 
 	@Override
 	public String displayCollection() {
-		// TODO Auto-generated method stub
-		return null;
+		String result = "";
+		String type = "";
+		String otherInfo = "";
+		String checkedOut = "";
+		
+		for(Material mat : materialList) {
+			if(mat.canBeCheckedOut()) {
+				//if canBeCheckedOut = true, it is NOT checked out (it is available to check out)
+				checkedOut = "No";
+			}
+			else {
+				//if canBeCheckedOut = false, it IS checked out (it is NOT available to check out)
+				checkedOut = "Yes";
+			}
+			//check what type the material is first,
+			//add related info depending on the type
+			if(mat instanceof Book) { 
+				type = "Book";
+				otherInfo = "Author: " + ((Book)mat).getAuthor() + "\nGenre: " + ((Book)mat).getGenre();
+			}
+			
+			else if(mat instanceof Periodical){
+				type = "Periodical";
+				otherInfo = "Volume: " + ((Periodical)mat).getVolume() + "\nIssue: " + ((Periodical)mat).getIssue() +
+						"\nGenre: " + ((Periodical)mat).getGenre();
+			}
+			
+			//concatenate all String info to display in a cohesive way
+			result += "Material Type: " + type + "\nCall Number: " + mat.getCallNumber() + "\nTitle: " 
+					+ mat.getTitle() + "\nChecked Out: " + checkedOut + "\nDate Checked Out: " + mat.getCheckOutDate() + 
+					"\nDue Date: " + mat.getDueDate() + "\n" + otherInfo + "\n\n";
+		}
+		
+		return result;
 	}
 
 	@Override
 	public ArrayList<Material> getMaterialList() {
-		// TODO Auto-generated method stub
-		return null;
+		return materialList;
 	}
 
 }
