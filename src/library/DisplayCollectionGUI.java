@@ -11,6 +11,12 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.List;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
+import javax.swing.JTextArea;
+import javax.swing.JTextPane;
+import javax.swing.JScrollPane;
+import javax.swing.JScrollBar;
+import javax.swing.JTable;
 
 public class DisplayCollectionGUI {
 
@@ -54,35 +60,41 @@ public class DisplayCollectionGUI {
 				frame.setVisible(true);
 			}
 		});
-		JLabel displayCollectionString = new JLabel("Test until display collection works");
-		//JLabel displayCollectionString = new JLabel(lib.displayCollection());
+		
+		JTextArea textArea = new JTextArea(lib.displayCollection(),50,50);
+		textArea.setWrapStyleWord(true);
+		textArea.setLineWrap(true);
+		textArea.setEditable(false);
+		
 		
 		GroupLayout groupLayout = new GroupLayout(frmDisplaymaterials.getContentPane());
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.TRAILING)
+			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(Greeting, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
-					.addGap(66))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(198)
-					.addComponent(displayCollectionString, GroupLayout.PREFERRED_SIZE, 231, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(back)
-					.addPreferredGap(ComponentPlacement.RELATED, 299, Short.MAX_VALUE)
-					.addComponent(quit)
-					.addContainerGap())
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(10)
+							.addComponent(textArea, GroupLayout.PREFERRED_SIZE, 364, Short.MAX_VALUE)
+							.addGap(32))
+						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+							.addGroup(groupLayout.createSequentialGroup()
+								.addComponent(Greeting, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
+								.addGap(66))
+							.addGroup(groupLayout.createSequentialGroup()
+								.addComponent(back)
+								.addPreferredGap(ComponentPlacement.RELATED, 298, Short.MAX_VALUE)
+								.addComponent(quit)
+								.addContainerGap()))))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(Greeting)
-					.addGap(37)
-					.addComponent(displayCollectionString, GroupLayout.PREFERRED_SIZE, 133, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(textArea, GroupLayout.PREFERRED_SIZE, 177, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(quit)
 						.addComponent(back))

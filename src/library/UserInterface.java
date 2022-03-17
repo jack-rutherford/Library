@@ -41,6 +41,12 @@ public class UserInterface extends JFrame {
 			System.out.println("Error is: " + e);
 			e.printStackTrace();
 		}
+	}
+		
+		public String test() {
+			String result = "test";
+			return result;
+		}
 	
 		
 		
@@ -56,9 +62,6 @@ public class UserInterface extends JFrame {
 		
 		
 		
-		
-
-	}
 
 	public void greeting() {
 		// TODO Auto-generated method stub
