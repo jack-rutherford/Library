@@ -12,10 +12,15 @@ public class Library implements ILibrary {
 	
 	//Current date of type gregorian calendar
 	
+	/**
+	 * Initializes and loads materials from a text file (libraries inventory list) into an array to be accessed. 
+	 */
 	@Override
 	public void loadMaterials() throws FileNotFoundException {
 		// TODO Loads materials from input file into array of materials. 
 		materialList = new ArrayList<>();
+		
+		//try statement to catch file not found
 		try {
 			File file = new File("Input.txt");
 			Scanner scan = new Scanner(file);
@@ -32,11 +37,6 @@ public class Library implements ILibrary {
 		catch(FileNotFoundException e) {
 			System.out.println("File not found...");
 		}
-		for(int i = 0; i < materialList.size(); i++)
-		{
-			System.out.println(materialList.get(i).getTitle());
-		}
-		
 	}
 
 	@Override
