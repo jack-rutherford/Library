@@ -26,7 +26,6 @@ public class CheckOutGUI {
 	 */
 	public JFrame getcoFrame() {
 		return frmCheckout;
-		System.out.println("Test");
 	}
 
 	/**
