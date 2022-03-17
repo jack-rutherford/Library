@@ -22,7 +22,7 @@ public abstract class Material {
 	}
 
 	public boolean canBeCheckedOut() {
-		return canBeCheckedOut();
+		return canBeCheckedOut;
 	}
 
 	public void setCanBeCheckedOut(boolean canBeCheckedOut) {
@@ -47,7 +47,7 @@ public abstract class Material {
 	}
 
 	public String getDueDate() {
-		return String.format("Date Out: %tD\n", dueDate);
+		return String.format("Due Date: %tD\n", dueDate);
 	}
 	
 	public String getCheckOutDate() {

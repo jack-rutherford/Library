@@ -12,30 +12,38 @@ public class Library implements ILibrary {
 	
 	//Current date of type gregorian calendar
 	
+	public Library() { 
+		materialList = new ArrayList<>();
+	}
+	
 	/**
 	 * Initializes and loads materials from a text file (libraries inventory list) into an array to be accessed. 
 	 */
 	@Override
 	public void loadMaterials() throws FileNotFoundException {
-		// TODO Loads materials from input file into array of materials. 
-		materialList = new ArrayList<>();
 		
 		//try statement to catch file not found
 		try {
 			File file = new File("Input.txt");
 			Scanner scan = new Scanner(file);
+			FileReader fr = new FileReader(file);
+			BufferedReader br = new BufferedReader(fr);
 			String[] temp = new String[4];
-			while(scan.hasNextLine()) {
-					temp = scan.nextLine().split(",");
+			String line = br.readLine();
+			while(line != null) {
+					temp = line.split(",");
 					if(temp[0].equals("B")) 
 						materialList.add(new Book(temp[1],temp[2],temp[3],temp[4]));
 					else
-						materialList.add(new Periodical(temp[1],temp[2],temp[3],temp[4],temp[5]));	
+						materialList.add(new Periodical(temp[1],temp[2],temp[3],temp[4],temp[5]));
+					line = br.readLine();
 			}
 			scan.close();
 		}
 		catch(FileNotFoundException e) {
 			System.out.println("File not found...");
+		} catch(IOException e) {
+			System.out.println("Error reading the line...");
 		}
 	}
 
@@ -59,14 +67,6 @@ public class Library implements ILibrary {
 		String checkedOut = "";
 		
 		for(Material mat : materialList) {
-			if(mat.canBeCheckedOut()) {
-				//if canBeCheckedOut = true, it is NOT checked out (it is available to check out)
-				checkedOut = "No";
-			}
-			else {
-				//if canBeCheckedOut = false, it IS checked out (it is NOT available to check out)
-				checkedOut = "Yes";
-			}
 			//check what type the material is first,
 			//add related info depending on the type
 			if(mat instanceof Book) { 
@@ -79,13 +79,22 @@ public class Library implements ILibrary {
 				otherInfo = "Volume: " + ((Periodical)mat).getVolume() + "\nIssue: " + ((Periodical)mat).getIssue() +
 						"\nGenre: " + ((Periodical)mat).getGenre();
 			}
+			if(mat.canBeCheckedOut()) {
+				//if canBeCheckedOut = true, it is NOT checked out (it is available to check out)
+				checkedOut = "No";
+				result += "Material Type: " + type + "\nCall Number: " + mat.getCallNumber() + "\nTitle: " 
+						+ mat.getTitle() + "\nChecked Out: " + checkedOut + "\n" +  otherInfo + "\n\n";
+			}
+			else { //don't display checkout date and due date if it isn't checked out
+				//if canBeCheckedOut = false, it IS checked out (it is NOT available to check out)
+				checkedOut = "Yes";
+				result += "Material Type: " + type + "\nCall Number: " + mat.getCallNumber() + "\nTitle: " 
+						+ mat.getTitle() + "\nChecked Out: " + checkedOut + "\n" +  otherInfo + "\n" + mat.getCheckOutDate() + 
+						mat.getDueDate() + "\n\n";
+			}
 			
-			//concatenate all String info to display in a cohesive way
-			result += "Material Type: " + type + "\nCall Number: " + mat.getCallNumber() + "\nTitle: " 
-					+ mat.getTitle() + "\nChecked Out: " + checkedOut + "\nDate Checked Out: " + mat.getCheckOutDate() + 
-					"\nDue Date: " + mat.getDueDate() + "\n" + otherInfo + "\n\n";
 		}
-		
+		System.out.println(result);
 		return result;
 	}
 

@@ -27,7 +27,9 @@ public class UserInterface extends JFrame {
 		//Make the library and load the materials
 		
 		try {
-			new Library().loadMaterials();
+			Library lib = new Library();
+			lib.loadMaterials();
+			lib.displayCollection();
 			HomeScreenGUI g = new HomeScreenGUI();
 			g.initialize();
 			
