@@ -38,6 +38,7 @@ public class UserInterface extends JFrame {
 		catch(Exception e) {
 			System.out.println("Error is: " + e);
 			e.printStackTrace();
+			System.out.println("test");
 		}
 	
 		
