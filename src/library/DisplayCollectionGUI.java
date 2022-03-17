@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.List;
@@ -61,10 +62,18 @@ public class DisplayCollectionGUI {
 			}
 		});
 		
-		JTextArea textArea = new JTextArea(lib.displayCollection(),50,50);
+		JTextArea textArea = new JTextArea(50,50);
 		textArea.setWrapStyleWord(true);
 		textArea.setLineWrap(true);
 		textArea.setEditable(false);
+		
+		JButton Display = new JButton("Display Collection");
+		Display.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(frmDisplaymaterials, lib.displayCollection());
+				textArea.setText(lib.displayCollection());
+			}
+		});
 		
 		
 		GroupLayout groupLayout = new GroupLayout(frmDisplaymaterials.getContentPane());
@@ -75,23 +84,26 @@ public class DisplayCollectionGUI {
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(10)
-							.addComponent(textArea, GroupLayout.PREFERRED_SIZE, 364, Short.MAX_VALUE)
+							.addComponent(textArea, GroupLayout.PREFERRED_SIZE, 386, Short.MAX_VALUE)
 							.addGap(32))
-						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-							.addGroup(groupLayout.createSequentialGroup()
-								.addComponent(Greeting, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
-								.addGap(66))
-							.addGroup(groupLayout.createSequentialGroup()
-								.addComponent(back)
-								.addPreferredGap(ComponentPlacement.RELATED, 298, Short.MAX_VALUE)
-								.addComponent(quit)
-								.addContainerGap()))))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(Greeting, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(Display)
+							.addGap(61))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(back)
+							.addPreferredGap(ComponentPlacement.RELATED, 298, Short.MAX_VALUE)
+							.addComponent(quit)
+							.addContainerGap())))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(Greeting)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(Greeting)
+						.addComponent(Display))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(textArea, GroupLayout.PREFERRED_SIZE, 177, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED, 18, Short.MAX_VALUE)

@@ -45,7 +45,7 @@ public class HomeScreenGUI {
 		
 		JButton checkout = new JButton("Check Out");
 		checkout.addActionListener(new ActionListener() {
-			
+		
 			//Creates CheckoutGUI
 			public void actionPerformed(ActionEvent e) {
 				frame.setVisible(false);
@@ -63,7 +63,6 @@ public class HomeScreenGUI {
 		
 		JButton displaycollection = new JButton("Display Collection");
 		displaycollection.addActionListener(new ActionListener() {
-			
 			//Creates DisplayCollectionGUI
 			public void actionPerformed(ActionEvent e) {
 				frame.setVisible(false);

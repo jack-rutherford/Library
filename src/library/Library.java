@@ -94,7 +94,7 @@ public class Library implements ILibrary {
 			}
 			
 		}
-		//System.out.println(result);
+		System.out.println(result);
 		return result;
 	}
 
