@@ -29,12 +29,13 @@ public class UserInterface extends JFrame {
 		try {
 			new Library().loadMaterials();
 			HomeScreenGUI g = new HomeScreenGUI();
+			g.initialize();
 			
 		}
 		catch (FileNotFoundException e) {
 			System.out.println("File not found...");
 		}
-		catch(IOException e) {
+		catch(Exception e) {
 			System.out.println("Error is: " + e);
 			e.printStackTrace();
 		}

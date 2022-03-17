@@ -42,7 +42,7 @@ public class Library implements ILibrary {
 	@Override
 	public boolean checkOut(String callNumber) {
 		for(Material mat : materialList) {
-			if(mat.getCallNumber().equals(callNumber)) {
+			if(mat.getCallNumber().equalsIgnoreCase(callNumber)) {
 				mat.setCanBeCheckedOut(false);
 				mat.setDueDate();
 				return true; //Found the material we were looking for

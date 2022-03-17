@@ -19,46 +19,45 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class HomeScreenGUI {
 
-	private JFrame frame;
-
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					HomeScreenGUI window = new HomeScreenGUI();
-//					window.frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
-
+	public static JFrame frame;
+	private CheckOutGUI coGUI;
+	private DisplayCollectionGUI dcGUI;
+	
 	/**
-	 * Create the application.
+	 * Allows access to HomeScreenGUI's frame so its visibility can be updated. 
+	 * @return HomeScreenGUI's frame. 
 	 */
-	public HomeScreenGUI() {
-		initialize();
-		frame.setVisible(true);
+	public JFrame getFrame() {
+		return frame;
 	}
+
 
 	/**
 	 * Initialize the contents of the frame.
+	 * @wbp.parser.entryPoint
 	 */
-	private void initialize() {
+	public void initialize() {
 		frame = new JFrame();
 		frame.setTitle("Library");
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
 		
 		JButton checkout = new JButton("Check Out");
 		checkout.addActionListener(new ActionListener() {
 			
 			//Creates CheckoutGUI
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Check out");
-				
 				frame.setVisible(false);
+				if(coGUI == null) {
+					coGUI = new CheckOutGUI();
+					coGUI.initialize();
+				}
+				JFrame coFrame = coGUI.getcoFrame();
+				coFrame.setVisible(true);
+				
+				
+					
 			}
 		});
 		
@@ -67,9 +66,15 @@ public class HomeScreenGUI {
 			
 			//Creates DisplayCollectionGUI
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Display collection");
-				
 				frame.setVisible(false);
+				if(dcGUI == null) {
+					dcGUI = new DisplayCollectionGUI();
+					dcGUI.initialize();
+				}
+				JFrame dcFrame = dcGUI.getdisplayFrame();
+				dcFrame.setVisible(true);
+				
+					
 			}
 		});
 		
@@ -92,10 +97,13 @@ public class HomeScreenGUI {
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(150)
 							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
-								.addComponent(quit, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 								.addComponent(checkout, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 								.addComponent(displaycollection, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE))))
 					.addContainerGap(73, Short.MAX_VALUE))
+				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+					.addContainerGap(365, Short.MAX_VALUE)
+					.addComponent(quit, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -106,9 +114,9 @@ public class HomeScreenGUI {
 					.addComponent(displaycollection)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(checkout)
-					.addGap(8)
+					.addGap(129)
 					.addComponent(quit)
-					.addGap(140))
+					.addGap(19))
 		);
 		frame.getContentPane().setLayout(groupLayout);
 	}
