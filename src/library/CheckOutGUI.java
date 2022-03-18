@@ -92,7 +92,7 @@ public class CheckOutGUI {
 						JOptionPane.showMessageDialog(frmCheckout, mat.getTitle() +  " was successfully checked out! " + mat.getDueDate());
 					}
 					else {
-						JOptionPane.showMessageDialog(frmCheckout, "Material " + mat.getTitle() +  "cannot be checked out!  " + mat.getDueDate());
+						JOptionPane.showMessageDialog(frmCheckout, "Material " + mat.getTitle() +  " cannot be checked out!  " + mat.getDueDate());
 					}
 				}
 				else {
