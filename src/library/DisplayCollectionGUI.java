@@ -1,7 +1,5 @@
 package library;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -9,15 +7,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import java.awt.List;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.Font;
 import javax.swing.JTextArea;
-import javax.swing.JTextPane;
-import javax.swing.JScrollPane;
-import javax.swing.JScrollBar;
-import javax.swing.JTable;
 
 public class DisplayCollectionGUI {
 

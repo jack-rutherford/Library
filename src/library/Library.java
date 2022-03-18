@@ -1,10 +1,7 @@
 package library;
 
 import java.io.*;
-import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
 
 /**
  * 
@@ -43,7 +40,6 @@ public class Library implements ILibrary {
 		//try statement to catch file not found
 		try {
 			File file = new File("Input.txt");
-			Scanner scan = new Scanner(file);
 			FileReader fr = new FileReader(file);
 			BufferedReader br = new BufferedReader(fr);
 			String[] temp = new String[4];
@@ -56,7 +52,7 @@ public class Library implements ILibrary {
 						materialList.add(new Periodical(temp[1],temp[2],temp[3],temp[4],temp[5]));
 					line = br.readLine();
 			}
-			scan.close();
+			br.close();
 		}
 		catch(FileNotFoundException e) {
 			System.out.println("File not found...");
