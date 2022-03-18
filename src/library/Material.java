@@ -5,7 +5,6 @@ import java.util.GregorianCalendar;
 
 public abstract class Material {
 
-	//	private int checkOutTime;
 	private String title;
 	private String callNumber;
 	private boolean canBeCheckedOut;
