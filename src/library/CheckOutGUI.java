@@ -19,7 +19,12 @@ public class CheckOutGUI {
 	public static JFrame frmCheckout;
 	private JTextField input;
 	private HomeScreenGUI hs;
+	private Library lib;
 
+	public CheckOutGUI(Library lib) {
+		this.lib = lib;
+	}
+	
 	/**
 	 * Allows access to CheckOutGUI's frmCheckout so its visibility can be updated. 
 	 * @return CheckOutGUI's frame.
@@ -37,13 +42,13 @@ public class CheckOutGUI {
 		frmCheckout.setTitle("Checkout");
 		frmCheckout.setBounds(100, 100, 450, 300);
 		frmCheckout.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Library lib = new Library();
+//		Library lib = new Library();
 		
 		JButton back = new JButton("< Back");
 		back.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frmCheckout.setVisible(false);
-				hs = new HomeScreenGUI();
+				hs = new HomeScreenGUI(lib);
 				JFrame frame = hs.getFrame();
 				frame.setVisible(true);
 			}
@@ -64,12 +69,21 @@ public class CheckOutGUI {
 		checkout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String callNumber = input.getText();
-				System.out.println(callNumber);
-				if(lib.checkOut(callNumber) == false)
+//				System.out.println(callNumber);
+				Material mat = lib.findMaterial(callNumber);
+				if(mat != null) //checks out the item in this line
 				{
+					if(mat.canBeCheckedOut()) {
+						lib.checkOut(callNumber);
+						JOptionPane.showMessageDialog(frmCheckout, "Item successfully checked out!");
+					}
+					else {
+						JOptionPane.showMessageDialog(frmCheckout, "Material cannot be checked out!");
+					}
+				}
+				else {
 					JOptionPane.showMessageDialog(frmCheckout, "Material not found in collection!");
 				}
-				lib.checkOut(callNumber);
 				
 			}
 		});

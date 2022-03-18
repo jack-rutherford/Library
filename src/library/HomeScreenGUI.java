@@ -22,6 +22,13 @@ public class HomeScreenGUI {
 	public static JFrame frame;
 	private CheckOutGUI coGUI;
 	private DisplayCollectionGUI dcGUI;
+	private Library lib;
+	
+	
+	public HomeScreenGUI(Library lib) {
+		this.lib = lib;
+	}
+	
 	
 	/**
 	 * Allows access to HomeScreenGUI's frame so its visibility can be updated. 
@@ -50,7 +57,7 @@ public class HomeScreenGUI {
 			public void actionPerformed(ActionEvent e) {
 				frame.setVisible(false);
 				if(coGUI == null) {
-					coGUI = new CheckOutGUI();
+					coGUI = new CheckOutGUI(lib);
 					coGUI.initialize();
 				}
 				JFrame coFrame = coGUI.getcoFrame();
@@ -67,7 +74,7 @@ public class HomeScreenGUI {
 			public void actionPerformed(ActionEvent e) {
 				frame.setVisible(false);
 				if(dcGUI == null) {
-					dcGUI = new DisplayCollectionGUI();
+					dcGUI = new DisplayCollectionGUI(lib);
 					dcGUI.initialize();
 				}
 				JFrame dcFrame = dcGUI.getdisplayFrame();

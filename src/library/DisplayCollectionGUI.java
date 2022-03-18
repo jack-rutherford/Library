@@ -23,7 +23,12 @@ public class DisplayCollectionGUI {
 
 	public static JFrame frmDisplaymaterials;
 	private HomeScreenGUI hs;
+	private Library lib;
 
+	public DisplayCollectionGUI(Library lib) {
+		this.lib = lib;
+	}
+	
 	/**
 	 * Allows acces to the static frmDisplayMaterials field so its visibility can be updated.
 	 * @return DisplayCollectionGUI's frame.
@@ -36,7 +41,7 @@ public class DisplayCollectionGUI {
 	 * @wbp.parser.entryPoint
 	 */
 	public void initialize() {
-		Library lib = new Library();
+//		Library lib = new Library();
 		frmDisplaymaterials = new JFrame();
 		frmDisplaymaterials.setTitle("DisplayMaterials");
 		frmDisplaymaterials.setBounds(100, 100, 450, 300);
@@ -56,7 +61,7 @@ public class DisplayCollectionGUI {
 		back.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frmDisplaymaterials.setVisible(false);
-				hs = new HomeScreenGUI();
+				hs = new HomeScreenGUI(lib);
 				JFrame frame = hs.getFrame();
 				frame.setVisible(true);
 			}
@@ -71,9 +76,7 @@ public class DisplayCollectionGUI {
 		JButton Display = new JButton("Display Collection");
 		Display.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//JOptionPane.showMessageDialog(frmDisplaymaterials, lib.displayCollection());
-				String str = textArea.getText();
-				System.out.println(str);
+				JOptionPane.showMessageDialog(frmDisplaymaterials, lib.displayCollection());
 			}
 		});
 		

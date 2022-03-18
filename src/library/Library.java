@@ -14,6 +14,12 @@ public class Library implements ILibrary {
 	
 	public Library() { 
 		materialList = new ArrayList<>();
+		try {
+			loadMaterials();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	/**
@@ -58,6 +64,15 @@ public class Library implements ILibrary {
 		}
 		return false; //Didn't find the material in the collection
 	}
+	
+	public Material findMaterial(String callNumber) {
+		for(Material mat : materialList) {
+			if(mat.getCallNumber().equalsIgnoreCase(callNumber)) {
+				return mat;
+			}
+		}
+		return null;
+	}
 
 	@Override
 	public String displayCollection() {
@@ -90,11 +105,11 @@ public class Library implements ILibrary {
 				checkedOut = "Yes";
 				result += "Material Type: " + type + "\nCall Number: " + mat.getCallNumber() + "\nTitle: " 
 						+ mat.getTitle() + "\nChecked Out: " + checkedOut + "\n" +  otherInfo + "\n" + mat.getCheckOutDate() + 
-						mat.getDueDate() + "\n\n";
+						mat.getDueDate() + "\n";
 			}
 			
 		}
-		System.out.println(result);
+//		System.out.println(result);
 		return result;
 	}
 
