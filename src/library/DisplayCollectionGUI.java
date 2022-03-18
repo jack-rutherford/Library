@@ -16,6 +16,7 @@ public class DisplayCollectionGUI {
 	public static JFrame frmDisplaymaterials;
 	private HomeScreenGUI hs;
 	private Library lib;
+	private JTextArea textArea;
 
 	/**
 	 * Constructor for DisplayCollectionGUI that takes a library parameter
@@ -26,6 +27,9 @@ public class DisplayCollectionGUI {
 		this.lib = lib;
 	}
 	
+	public JTextArea getTA() {
+		return textArea;
+	}
 	/**
 	 * Allows acces to the static frmDisplayMaterials field so its visibility can be updated.
 	 * @return DisplayCollectionGUI's frame.
@@ -64,7 +68,7 @@ public class DisplayCollectionGUI {
 			}
 		});
 		
-		JTextArea textArea = new JTextArea(50,50);
+		textArea = new JTextArea(50,50);
 		textArea.setText(lib.displayCollection());
 		textArea.setWrapStyleWord(true);
 		textArea.setLineWrap(true);

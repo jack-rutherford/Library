@@ -4,6 +4,7 @@ package library;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JTextArea;
 //import com.jgoodies.forms.layout.FormLayout;
 //import com.jgoodies.forms.layout.ColumnSpec;
 //import com.jgoodies.forms.layout.RowSpec;
@@ -78,6 +79,8 @@ public class HomeScreenGUI {
 					dcGUI.initialize();
 				}
 				JFrame dcFrame = dcGUI.getdisplayFrame();
+				JTextArea ta = dcGUI.getTA();
+				ta.setText(lib.displayCollection());
 				dcFrame.setVisible(true);
 				
 					
