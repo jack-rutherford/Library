@@ -14,6 +14,17 @@ import javax.swing.JOptionPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * Specific GUI for the panel that deals with checking out books.
+ * Includes text box, button to check out books among other JPanel
+ * components that allows access to the other GUI's
+ * 
+ * @author jackrutherford
+ * @author justinfay
+ * @date 3/17/22
+ * @class CSCI 235
+ *
+ */
 public class CheckOutGUI {
 
 	public static JFrame frmCheckout;
@@ -21,6 +32,11 @@ public class CheckOutGUI {
 	private HomeScreenGUI hs;
 	private Library lib;
 
+	/**
+	 * Constructor for CheckOutGui that takes a library parameter
+	 * so that the same library variable is used among the 3 GUI's
+	 * @param lib
+	 */
 	public CheckOutGUI(Library lib) {
 		this.lib = lib;
 	}

@@ -24,7 +24,11 @@ public class HomeScreenGUI {
 	private DisplayCollectionGUI dcGUI;
 	private Library lib;
 	
-	
+	/**
+	 * Constructor for HomeScreenGUI that takes a library parameter
+	 * so that the same library variable is used among the 3 GUI's
+	 * @param lib
+	 */
 	public HomeScreenGUI(Library lib) {
 		this.lib = lib;
 	}

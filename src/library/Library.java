@@ -6,6 +6,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
+/**
+ * 
+ * The library class deals with managing and populating the arraylist
+ * of Materials for UserInterface and the GUI's to use. It also displays
+ * the contents of the material arraylist in String form.
+ * 
+ * @author jackrutherford
+ * @author justinfay
+ * @date 3/17/22
+ * @class CSCI 235
+ *
+ */
 public class Library implements ILibrary {
 
 	private ArrayList<Material> materialList;
@@ -52,7 +64,12 @@ public class Library implements ILibrary {
 			System.out.println("Error reading the line...");
 		}
 	}
-
+	
+	
+	/**
+	 * Finds a material in the material arraylist given its call number
+	 * returns true and sets the due date if it was found, and false if not
+	 */
 	@Override
 	public boolean checkOut(String callNumber) {
 		for(Material mat : materialList) {
@@ -65,6 +82,12 @@ public class Library implements ILibrary {
 		return false; //Didn't find the material in the collection
 	}
 	
+	/**
+	 * Finds a material and returns the type material if it is found.
+	 * Finds the material using a String callNumber
+	 * @param callNumber
+	 * @return material or null
+	 */
 	public Material findMaterial(String callNumber) {
 		for(Material mat : materialList) {
 			if(mat.getCallNumber().equalsIgnoreCase(callNumber)) {
@@ -73,7 +96,12 @@ public class Library implements ILibrary {
 		}
 		return null;
 	}
-
+	
+	/**
+	 * Prints out the entire materialList collection in a concise and clear way.
+	 * It prints out different information depending on the variables type, and 
+	 * whether or not it's checked out
+	 */
 	@Override
 	public String displayCollection() {
 		String result = "";
@@ -112,7 +140,11 @@ public class Library implements ILibrary {
 //		System.out.println(result);
 		return result;
 	}
-
+	
+	/**
+	 * Returns an arraylist of the materialList
+	 * @return materialList
+	 */
 	@Override
 	public ArrayList<Material> getMaterialList() {
 		return materialList;
