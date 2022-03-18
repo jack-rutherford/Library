@@ -89,10 +89,10 @@ public class CheckOutGUI {
 				{
 					if(mat.canBeCheckedOut()) {
 						lib.checkOut(callNumber);
-						JOptionPane.showMessageDialog(frmCheckout, "Item successfully checked out!");
+						JOptionPane.showMessageDialog(frmCheckout, mat.getTitle() +  " was successfully checked out! " + mat.getDueDate());
 					}
 					else {
-						JOptionPane.showMessageDialog(frmCheckout, "Material cannot be checked out!");
+						JOptionPane.showMessageDialog(frmCheckout, "Material " + mat.getTitle() +  "cannot be checked out!  " + mat.getDueDate());
 					}
 				}
 				else {
