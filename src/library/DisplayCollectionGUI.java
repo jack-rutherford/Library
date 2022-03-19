@@ -10,13 +10,14 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
 
 public class DisplayCollectionGUI {
 
 	public static JFrame frmDisplaymaterials;
+	public JTextArea textArea;
 	private HomeScreenGUI hs;
 	private Library lib;
-	private JTextArea textArea;
 
 	/**
 	 * Constructor for DisplayCollectionGUI that takes a library parameter
@@ -45,7 +46,7 @@ public class DisplayCollectionGUI {
 //		Library lib = new Library();
 		frmDisplaymaterials = new JFrame();
 		frmDisplaymaterials.setTitle("DisplayMaterials");
-		frmDisplaymaterials.setBounds(400, 400, 850, 600);
+		frmDisplaymaterials.setBounds(100, 100, 450, 300);
 		frmDisplaymaterials.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmDisplaymaterials.setVisible(true);
 		
@@ -68,55 +69,44 @@ public class DisplayCollectionGUI {
 			}
 		});
 		
-		textArea = new JTextArea(50,50);
-		textArea.setText(lib.displayCollection());
-		textArea.setWrapStyleWord(true);
-		textArea.setLineWrap(true);
-		textArea.setEditable(false);
-		
-		JButton Display = new JButton("Display Collection");
-		Display.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(frmDisplaymaterials, lib.displayCollection());
-			}
-		});
-
-		
+		JScrollPane scrollPane = new JScrollPane();
+	
 		GroupLayout groupLayout = new GroupLayout(frmDisplaymaterials.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(Greeting, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(Display)
-							.addGap(61))
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(back)
-							.addPreferredGap(ComponentPlacement.RELATED, 676, Short.MAX_VALUE)
-							.addComponent(quit)
-							.addGap(32))))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(20)
-					.addComponent(textArea, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+							.addGap(296)
+							.addComponent(quit))
+						.addComponent(Greeting, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)
+						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 415, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(12, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(Greeting)
-						.addComponent(Display))
+					.addGap(20)
+					.addComponent(Greeting)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(textArea, GroupLayout.PREFERRED_SIZE, 451, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 170, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(back)
 						.addComponent(quit))
 					.addContainerGap())
 		);
+		
+		textArea = new JTextArea();
+		scrollPane.setViewportView(textArea);
+		textArea.setText(lib.displayCollection());
+		textArea.setWrapStyleWord(true);
+		textArea.setLineWrap(true);
+		textArea.setEditable(false);
+		frmDisplaymaterials.getContentPane().setLayout(groupLayout);
+		frmDisplaymaterials.getContentPane().setLayout(groupLayout);
 		frmDisplaymaterials.getContentPane().setLayout(groupLayout);
 		
 	}
